@@ -2,6 +2,7 @@ import os, sys
 
 import allure
 import pytest
+import time
 
 sys.path.append(os.getcwd())
 
@@ -43,14 +44,18 @@ class TestLogin:
         # 输入手机号
         allure.attach('输入用户名' + username, "")
         self.login_page.input_username(username)
+        time.sleep(1)
         # 输入密码
         allure.attach('输入密码', password)
         self.login_page.input_password(password)
+        time.sleep(1)
         # 点击登录
         allure.attach('点击登录', '')
         self.login_page.click_login()
+        time.sleep(1)
         allure.attach('判断"对应的提示"是否存在', toast)
         res = self.login_page.is_toast_exist(toast, True, screen)
+        time.sleep(1)
         # 上传图片
         allure.attach('图片', open('./screen/' + screen + '.png', 'rb').read(), allure.attach_type.PNG)
         assert res

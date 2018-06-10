@@ -54,9 +54,9 @@ class TestLogin:
         self.login_page.click_login()
         time.sleep(1)
         allure.attach('判断"对应的提示"是否存在', toast)
-        res = self.login_page.is_toast_exist(toast, True, screen)
+        res = self.login_page.is_toast_exist(toast, False, screen)
         time.sleep(1)
         # 上传图片
-        allure.attach('图片', open('./screen/' + screen + '.png', 'rb').read(), allure.attach_type.PNG)
+        # allure.attach('图片', open('./screen/' + screen + '.png', 'rb').read(), allure.attach_type.PNG)
         assert res
 
